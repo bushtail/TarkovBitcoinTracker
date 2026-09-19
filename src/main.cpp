@@ -62,17 +62,11 @@ void setup()
     Wire.begin(I2C_SDA_PIN, I2C_SCL_PIN);
     Wire.setTimeOut(50);
 
-    Serial.printf(
-        "\nTarkov %s Item Price Tracker\n",
-        gameMode.label());
+    Serial.printf("\nTarkov %s Item Price Tracker\n", gameMode.label());
 
     if (!display.begin())
     {
-        Serial.printf(
-            "LCD not found at 0x%02X (SDA %u, SCL %u). I2C scan:\n",
-            LCD_I2C_ADDRESS,
-            I2C_SDA_PIN,
-            I2C_SCL_PIN);
+        Serial.printf("LCD not found at 0x%02X (SDA %u, SCL %u). I2C scan:\n", LCD_I2C_ADDRESS, I2C_SDA_PIN, I2C_SCL_PIN);
 
         for (uint8_t address = 1; address < 127; ++address)
         {
@@ -80,9 +74,7 @@ void setup()
 
             if (Wire.endTransmission() == 0)
             {
-                Serial.printf(
-                    "  Found device at 0x%02X\n",
-                    address);
+                Serial.printf("Found device at 0x%02X\n", address);
             }
         }
     }
